@@ -1,0 +1,21 @@
+<!-- @dsCard group="Colors" viewport="700x140" name="Borders & Status" subtitle="Hairlines, emphasis borders, sparing status colors" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;padding:20px;background:var(--oxr-surface);font-family:var(--oxr-font-sans);color:var(--oxr-text)}
+  .row{display:flex;gap:14px}
+  .sw{flex:1;border-radius:var(--oxr-radius);overflow:hidden;border:1px solid var(--oxr-border)}
+  .chip{height:54px}
+  .meta{padding:8px 10px;font-size:12px}
+  .name{font-weight:600}
+  .hex{color:var(--oxr-text-muted);font-family:var(--oxr-font-mono);font-size:11px}
+</style></head>
+<body>
+<div class="row">
+  <div class="sw"><div class="chip" style="background:var(--oxr-border)"></div><div class="meta"><div class="name">Border</div><div class="hex">#E3DDD9</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--oxr-border-strong)"></div><div class="meta"><div class="name">Border strong</div><div class="hex">#664E3D</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--oxr-success)"></div><div class="meta"><div class="name">Success</div><div class="hex">#1F8A4C</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--oxr-warning)"></div><div class="meta"><div class="name">Warning</div><div class="hex">#C77700</div></div></div>
+  <div class="sw"><div class="chip" style="background:var(--oxr-danger)"></div><div class="meta"><div class="name">Danger</div><div class="hex">#C8372D</div></div></div>
+</div>
+</body></html>

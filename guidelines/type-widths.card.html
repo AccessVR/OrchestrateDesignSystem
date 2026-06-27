@@ -1,0 +1,15 @@
+<!-- @dsCard group="Type" viewport="700x170" name="Width Axis" subtitle="One variable font, four widths via font-stretch" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;padding:24px;background:var(--oxr-surface);font-family:var(--oxr-font-sans);color:var(--oxr-text)}
+  .row{display:flex;align-items:baseline;gap:16px;margin-bottom:10px}
+  .tok{font-family:var(--oxr-font-mono);font-size:11px;color:var(--oxr-text-muted);width:130px;flex-shrink:0}
+  .w{font-size:30px;font-weight:700;letter-spacing:-0.01em}
+</style></head>
+<body>
+  <div class="row"><span class="tok">expanded 125%</span><span class="w" style="font-stretch:125%">Immersive learning</span></div>
+  <div class="row"><span class="tok">normal 100%</span><span class="w" style="font-stretch:100%">Immersive learning</span></div>
+  <div class="row"><span class="tok">condensed 87.5%</span><span class="w" style="font-stretch:87.5%">Immersive learning</span></div>
+  <div class="row"><span class="tok">narrow 75%</span><span class="w" style="font-stretch:75%">Immersive learning</span></div>
+</body></html>

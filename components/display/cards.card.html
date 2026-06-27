@@ -1,0 +1,45 @@
+<!-- @dsCard group="Components" viewport="700x340" name="Cards & Feature Cards" subtitle="Surface containers and marketing feature tiles" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: 24px; background: var(--oxr-surface-tint); font-family: var(--oxr-font-sans); color: var(--oxr-text); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; align-items: start; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Card, FeatureCard, Eyebrow, Button } = window.OrchestrateXRDesignSystem_878eaf;
+  function Demo() {
+    return (
+      <div className="grid">
+        <Card>
+          <Eyebrow>Quiet card</Eyebrow>
+          <h3 style={{margin:'8px 0 6px', fontWeight:600, letterSpacing:'-0.02em'}}>Soft layered shadow</h3>
+          <p style={{margin:0, color:'var(--oxr-text-muted)'}}>White surface, 5px radius, roomy padding.</p>
+        </Card>
+        <Card elevation="crisp">
+          <Eyebrow>Featured</Eyebrow>
+          <h3 style={{margin:'8px 0 6px', fontWeight:600, letterSpacing:'-0.02em'}}>Signature offset</h3>
+          <p style={{margin:0, color:'var(--oxr-text-muted)'}}>The rare crisp 6px shadow.</p>
+        </Card>
+        <FeatureCard
+          eyebrow="Practice Conversations"
+          title="Learn to talk it out, virtually."
+          body="Authentic AI conversations for the moments that matter."
+          badge="Coming soon"
+          mediaBg="var(--oxr-grad-heat)" />
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

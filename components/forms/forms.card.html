@@ -1,0 +1,48 @@
+<!-- @dsCard group="Components" viewport="700x300" name="Form Controls" subtitle="Input, select, textarea, checkbox & switch" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: 24px; background: var(--oxr-surface); font-family: var(--oxr-font-sans); color: var(--oxr-text); }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px 28px; align-items: start; max-width: 640px; }
+  .stack { display: flex; flex-direction: column; gap: 14px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Input, Select, Textarea, Checkbox, Switch } = window.OrchestrateXRDesignSystem_878eaf;
+  function Demo() {
+    return (
+      <div className="grid">
+        <Input label="Work email" type="email" placeholder="you@org.edu" />
+        <Select label="Delivery target" defaultValue="web">
+          <option value="web">Web browser</option>
+          <option value="vr">VR headset</option>
+          <option value="mobile">Mobile</option>
+        </Select>
+        <Textarea label="Scenario prompt" rows={3} placeholder="Describe the conversation…" />
+        <div className="stack">
+          <Input label="Org name" error="This field is required" defaultValue="" />
+        </div>
+        <div className="stack">
+          <Checkbox label="Export as SCORM package" defaultChecked />
+          <Checkbox label="Include analytics" />
+        </div>
+        <div className="stack">
+          <Switch label="Enable AI debriefing" defaultChecked />
+          <Switch label="VR optional" />
+        </div>
+      </div>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>

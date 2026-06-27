@@ -1,0 +1,59 @@
+/**
+ * OrchestrateXR — Color tokens
+ * Reason in ROLES, not raw hex. One energetic orange accent on warm neutrals.
+ * Never pure #000 / pure #FFF-on-#000 contrast.
+ */
+:root {
+  /* ---- Base palette (raw) ---- */
+  --oxr-orange: #FF6600;       /* OrchestrateXR brand orange */
+  --oxr-orange-600: #E65C00;   /* hover / pressed darken */
+  --oxr-peach: #E9B796;        /* soft peach tint */
+  --oxr-cream: #F2ECE9;        /* warm cream wash */
+  --oxr-ink-900: #231B15;      /* warm near-black ink */
+  --oxr-brown-700: #452F21;    /* deep brown */
+  --oxr-brown-600: #664E3D;    /* emphasis border on warm fills */
+  --oxr-brown-500: #6D4F3B;    /* muted text */
+  --oxr-stone-100: #F8F7F7;    /* tint surface */
+  --oxr-stone-200: #E3DDD9;    /* hairline border */
+  --oxr-white: #FFFFFF;
+
+  /* ---- Secondary accent: purple (valid alongside orange; used in-app, e.g. the
+         home welcome banner). Orange stays primary; reach for purple as a feature
+         accent, not for everyday body UI. ---- */
+  --oxr-purple: #8A1FE0;
+  --oxr-purple-deep: #5B0B9E;
+  --oxr-purple-bright: #9A1EEE;
+
+  /* ---- Semantic color roles ---- */
+  --oxr-brand: var(--oxr-orange);
+  --oxr-brand-hover: var(--oxr-orange-600);
+  --oxr-brand-tint: var(--oxr-peach);
+  --oxr-brand-wash: var(--oxr-cream);
+
+  --oxr-text: var(--oxr-ink-900);        /* body + headings */
+  --oxr-text-muted: var(--oxr-brown-500); /* secondary, captions, meta */
+  --oxr-text-on-brand: var(--oxr-white);
+  --oxr-text-on-dark: var(--oxr-white);
+
+  --oxr-surface: var(--oxr-white);        /* page bg, cards */
+  --oxr-surface-tint: var(--oxr-stone-100); /* alt sections, code, insets */
+  --oxr-surface-wash: var(--oxr-cream);   /* warm cream section */
+  --oxr-surface-dark: var(--oxr-brown-700); /* dark sections, footer */
+
+  --oxr-border: var(--oxr-stone-200);     /* default hairline / input border */
+  --oxr-border-strong: var(--oxr-brown-600); /* emphasis on warm fills */
+
+  --oxr-link: var(--oxr-orange);
+  --oxr-focus: var(--oxr-orange);
+
+  /* ---- Status (kept warm, used sparingly) ---- */
+  --oxr-success: #1F8A4C;
+  --oxr-warning: #C77700;
+  --oxr-danger:  #C8372D;
+
+  /* ---- Accent gradients — HERO / feature moments only, never body UI ---- */
+  --oxr-grad-heat: linear-gradient(135deg, #F32758, #FFC581); /* @kind color */
+  --oxr-grad-blue: linear-gradient(135deg, #0057FF, #31B5FF); /* @kind color */
+  --oxr-grad-pink: linear-gradient(135deg, #FF007A, #FF81BD); /* @kind color */
+  --oxr-grad-purple: linear-gradient(90deg, #5B0B9E, #9A1EEE); /* @kind color */
+}

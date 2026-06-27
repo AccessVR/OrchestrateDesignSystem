@@ -1,0 +1,27 @@
+/**
+ * OrchestrateXR — Shape & elevation tokens
+ * 5px default radius. Nothing sharp, nothing bubbly. Soft, layered shadows.
+ */
+:root {
+  /* ---- Radius ---- */
+  --oxr-radius: 5px;          /* buttons, cards, inputs, code — the default */
+  --oxr-radius-sm: 3px;
+  --oxr-radius-image: 10px;   /* imagery */
+  --oxr-radius-pill: 9999px;  /* pills, avatars */
+
+  /* ---- Borders ---- */
+  --oxr-border-width: 1px;
+
+  /* ---- Shadows — soft & layered, never harsh ---- */
+  --oxr-shadow-card: 0px 25px 15px 0px rgba(20,17,31,0.03), 0px 11px 11px 0px rgba(20,17,31,0.04), 0px 3px 6px 0px rgba(20,17,31,0.05);
+  --oxr-shadow-popover: 0px 79px 47px 0px rgba(20,17,31,0.03), 0px 35px 35px 0px rgba(20,17,31,0.04), 0px 9px 19px 0px rgba(20,17,31,0.05);
+  /* Signature playful crisp offset — rare, deliberate, for featured elements */
+  --oxr-shadow-crisp: 6px 6px 0px var(--oxr-ink-900);
+
+  /* ---- Focus ring ---- */
+  --oxr-focus-ring: 0 0 0 3px rgba(255,102,0,0.35);
+
+  /* ---- Motion ---- */
+  --oxr-ease: cubic-bezier(0.4, 0, 0.2, 1); /* @kind other */
+  --oxr-duration: 180ms; /* @kind other */
+}

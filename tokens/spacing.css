@@ -1,0 +1,25 @@
+/**
+ * OrchestrateXR — Spacing & layout tokens
+ * Fluid rhythm — spacing breathes with the viewport.
+ */
+:root {
+  /* ---- Static step scale (UI-level spacing) ---- */
+  --oxr-space-1: 0.25rem;  /* 4px */
+  --oxr-space-2: 0.5rem;   /* 8px */
+  --oxr-space-3: 0.75rem;  /* 12px */
+  --oxr-space-4: 1rem;     /* 16px */
+  --oxr-space-5: 1.5rem;   /* 24px */
+  --oxr-space-6: 2rem;     /* 32px */
+  --oxr-space-7: 3rem;     /* 48px */
+  --oxr-space-8: 4rem;     /* 64px */
+
+  /* ---- Fluid rhythm (section-level spacing) ---- */
+  --oxr-space-block-gap: clamp(1.5rem, 4vw, 2rem);
+  --oxr-space-section: clamp(2rem, 5vw, 3rem);
+  --oxr-space-section-lg: clamp(3rem, 7vw, 5rem);
+  --oxr-space-hero: clamp(4rem, 9vw, 7rem);
+
+  /* ---- Layout containers ---- */
+  --oxr-content-width: 740px;  /* reading column */
+  --oxr-wide-width: 1260px;    /* wide content */
+}

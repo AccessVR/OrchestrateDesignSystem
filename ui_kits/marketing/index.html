@@ -1,0 +1,100 @@
+<!-- @dsCard group="Marketing Site" viewport="1280x820" name="Homepage" subtitle="orchestratexr.com — full marketing homepage recreation" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrchestrateXR — Simulation training for everyone</title>
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--oxr-font-sans); color: var(--oxr-text); background: var(--oxr-surface); -webkit-font-smoothing: antialiased; }
+  .oxr-mobile-menu { display: none; }
+  @media (max-width: 860px) {
+    .oxr-desktop-nav { display: none !important; }
+    .oxr-mobile-toggle { display: inline-flex !important; }
+    .oxr-hero-grid { grid-template-columns: 1fr !important; }
+    .oxr-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  .oxr-overlay { position: fixed; inset: 0; background: rgba(35,27,21,0.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="marketing-top.jsx"></script>
+<script type="text/babel" src="marketing-bottom.jsx"></script>
+<script type="text/babel">
+  const OXRk = window.OrchestrateXRDesignSystem_878eaf;
+
+  function AuthModal({ mode, onClose }) {
+    const { Button, Input, Logo } = OXRk;
+    const [done, setDone] = React.useState(false);
+    const register = mode === 'register';
+    return (
+      <div className="oxr-overlay" onClick={onClose}>
+        <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: 420, background: 'var(--oxr-surface)', borderRadius: 'var(--oxr-radius)', boxShadow: 'var(--oxr-shadow-popover)', padding: 'clamp(1.5rem,4vw,2.25rem)' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 18 }}>
+            <Logo size={22} />
+            <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 22, color: 'var(--oxr-text-muted)', lineHeight: 1 }}>×</button>
+          </div>
+          {done ? (
+            <div style={{ padding: '12px 0 4px' }}>
+              <h2 style={{ margin: '0 0 8px', fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.02em' }}>You’re in. 🎓</h2>
+              <p style={{ margin: '0 0 20px', color: 'var(--oxr-text-muted)' }}>Demo only — no account was created. This is the OrchestrateXR design-system kit.</p>
+              <Button variant="primary" fullWidth onClick={onClose}>Back to site</Button>
+            </div>
+          ) : (
+            <React.Fragment>
+              <h2 style={{ margin: '0 0 6px', fontWeight: 700, fontSize: '1.6rem', letterSpacing: '-0.02em' }}>{register ? 'Start training for free' : 'Welcome back'}</h2>
+              <p style={{ margin: '0 0 20px', color: 'var(--oxr-text-muted)' }}>{register ? 'No credit card required.' : 'Sign in to your OrchestrateXR account.'}</p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {register && <Input label="Full name" placeholder="Jordan Lee" />}
+                <Input label="Work email" type="email" placeholder="you@org.edu" />
+                <Input label="Password" type="password" placeholder="••••••••" />
+                <Button variant="primary" fullWidth uppercase onClick={() => setDone(true)}>{register ? 'Create free account' : 'Sign in'}</Button>
+              </div>
+            </React.Fragment>
+          )}
+        </div>
+      </div>
+    );
+  }
+
+  function Site() {
+    const [modal, setModal] = React.useState(null);
+    const reg = () => setModal('register');
+    const signin = () => setModal('login');
+    return (
+      <React.Fragment>
+        <Header onSignIn={signin} onRegister={reg} />
+        <main>
+          <Hero onRegister={reg} />
+          <FeatureGrid />
+          <CustomerStrip />
+          <BuiltFor />
+          <FeatureList />
+          <Stats />
+          <Testimonial />
+          <BlogStrip />
+          <FinalCTA onRegister={reg} />
+        </main>
+        <Footer />
+        {modal && <AuthModal mode={modal} onClose={() => setModal(null)} />}
+      </React.Fragment>
+    );
+  }
+
+  // Wait for section scripts (loaded via babel) to register on window.
+  function boot() {
+    if (window.Header && window.Footer && window.Stats) {
+      ReactDOM.createRoot(document.getElementById('root')).render(<Site />);
+    } else { setTimeout(boot, 30); }
+  }
+  boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<!-- @template name="Landing Page" description="OrchestrateXR marketing landing page — hero + product feature cards, built on the brand system." -->
+<helmet>
+<script src="./ds-base.js"></script>
+<style>
+  body { margin: 0; font-family: 'Mona Sans', system-ui, sans-serif; color: #231B15; background: #FFFFFF; -webkit-font-smoothing: antialiased; }
+</style>
+</helmet>
+<div style="min-height:100vh;">
+  <header style="position:sticky;top:0;z-index:10;background:rgba(255,255,255,0.92);backdrop-filter:blur(8px);border-bottom:1px solid #E3DDD9;">
+    <div style="max-width:1180px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:24px;">
+      <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Logo" size="34" hint-size="180px,34px"></x-import>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Button" variant="ghost" size="sm" uppercase="1" hint-size="90px,36px">Sign in</x-import>
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Button" variant="primary" size="sm" uppercase="1" hint-size="120px,36px">Get started</x-import>
+      </div>
+    </div>
+  </header>
+
+  <section style="max-width:1180px;margin:0 auto;padding:clamp(3rem,7vw,5.5rem) 24px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:clamp(2rem,5vw,4rem);align-items:center;">
+    <div>
+      <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Eyebrow" hint-size="200px,16px">Simulation training for everyone</x-import>
+      <h1 style="margin:0.6rem 0 1.25rem;font-weight:800;font-size:clamp(1.875rem,4vw,3.5rem);line-height:1.2;letter-spacing:-0.018em;">Train for the moments that matter.</h1>
+      <p style="margin:0 0 2rem;font-size:1.2rem;line-height:1.5;color:#6D4F3B;max-width:460px;">Use XR and AI to create effective, scalable training content that your learners will love — delivered to any headset, browser, or phone.</p>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;">
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Button" variant="primary" size="lg" uppercase="1" hint-size="220px,52px">Get started for free</x-import>
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.Button" variant="secondary" size="lg" uppercase="1" hint-size="150px,52px">See pricing</x-import>
+      </div>
+    </div>
+    <div style="aspect-ratio:4 / 3;border-radius:10px;background:linear-gradient(135deg,#F32758,#FFC581);display:flex;align-items:center;justify-content:center;">
+      <span style="font-size:0.72rem;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:rgba(255,255,255,0.85);">Hero imagery</span>
+    </div>
+  </section>
+
+  <section style="background:#F8F7F7;">
+    <div style="max-width:1180px;margin:0 auto;padding:clamp(3rem,6vw,4.5rem) 24px;">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:22px;">
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.FeatureCard" eyebrow="Practice Conversations" title="Learn to talk it out, virtually." body="Authentic conversations with AI that prepare learners for the moments that matter." media-bg="linear-gradient(135deg,#F32758,#FFC581)" hint-size="300px,330px"></x-import>
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.FeatureCard" eyebrow="Extend Reality" title="Active learning, VR optional." body="Immerse learners in mission-critical experiences, and let practice be their teacher." media-bg="linear-gradient(135deg,#0057FF,#31B5FF)" hint-size="300px,330px"></x-import>
+        <x-import component-from-global-scope="OrchestrateXRDesignSystem_878eaf.FeatureCard" eyebrow="Instant Video Training" title="Video training, instantly." body="Upload any video, and let AI draft the training. Edit, publish, train." badge="Coming soon" media-bg="#F2ECE9" hint-size="300px,330px"></x-import>
+      </div>
+    </div>
+  </section>
+</div>
+</x-dc>
+</body>
+</html>

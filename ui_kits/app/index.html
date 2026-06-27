@@ -1,0 +1,91 @@
+<!-- @dsCard group="Web App" viewport="1280x860" name="Home Dashboard" subtitle="app.orchestratexr.com home — faithful recreation on the brand system" -->
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrchestrateXR — Home</title>
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; height: 100%; }
+  body { font-family: var(--oxr-font-sans); background: #161210; -webkit-font-smoothing: antialiased; }
+  #root { height: 100vh; }
+  .oxr-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.6); backdrop-filter: blur(4px); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+  .oxr-fab { position: absolute; right: 28px; bottom: 28px; width: 56px; height: 56px; border-radius: 99px; border: none; cursor: pointer; background: #FF6600; color: #fff; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 24px rgba(255,102,0,0.4); z-index: 40; }
+  ::placeholder { color: #8a7d72; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="app-shell.jsx"></script>
+<script type="text/babel">
+  const K = window.OrchestrateXRDesignSystem_878eaf;
+
+  function CreateModal({ onClose }) {
+    const D = window.AppDark, I = window.APP_I, Ico = window.AppIcon;
+    const opts = [
+      [I.globe, 'Experience', 'Build an immersive XR environment, VR optional.'],
+      [I.userCircle, 'Character', 'Create an AI Replica to practice conversations with.'],
+      [I.video, 'Asset', 'Upload media to use across your training.'],
+    ];
+    return (
+      <div className="oxr-overlay" onClick={onClose}>
+        <div onClick={(e) => e.stopPropagation()} style={{ width: '100%', maxWidth: 540, background: D.card, border: '1px solid ' + D.line, borderRadius: 18, boxShadow: '0 30px 80px rgba(0,0,0,0.6)', padding: 28 }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 6 }}>
+            <h2 style={{ margin: 0, fontWeight: 700, fontSize: '1.5rem', letterSpacing: '-0.02em', color: D.text }}>Create new</h2>
+            <button onClick={onClose} aria-label="Close" style={{ background: 'none', border: 'none', cursor: 'pointer', fontSize: 24, color: D.muted }}>×</button>
+          </div>
+          <p style={{ margin: '0 0 18px', color: D.muted }}>What would you like to build?</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+            {opts.map(([ic, t, d]) => (
+              <button key={t} onClick={onClose} style={{ display: 'flex', alignItems: 'center', gap: 16, padding: 16, textAlign: 'left', cursor: 'pointer', background: D.bg, border: '1px solid ' + D.line, borderRadius: 14, fontFamily: 'var(--oxr-font-sans)' }}>
+                <span style={{ width: 48, height: 48, flexShrink: 0, borderRadius: 12, background: 'rgba(255,102,0,0.14)', color: D.accent, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><Ico d={ic} size={24} /></span>
+                <span><strong style={{ display: 'block', color: D.text, fontSize: '1.05rem' }}>{t}</strong><span style={{ color: D.muted, fontSize: '0.9rem' }}>{d}</span></span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  function AppRoot() {
+    const [active, setActive] = React.useState('home');
+    const [create, setCreate] = React.useState(false);
+    const D = window.AppDark;
+    return (
+      <div style={{ display: 'flex', height: '100%', background: D.bg, position: 'relative' }}>
+        <window.AppRail active={active} setActive={setActive} onCreate={() => setCreate(true)} />
+        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', minWidth: 0 }}>
+          <window.AppTopBar onAskAI={() => {}} />
+          <div style={{ flex: 1, minHeight: 0 }}>
+            {active === 'home' && <window.AppHome onCreate={() => setCreate(true)} />}
+            {active === 'library' && <window.AppPlaceholder title="Library" />}
+            {active === 'chat' && <window.AppPlaceholder title="Messages" />}
+            {active === 'people' && <window.AppPlaceholder title="People" />}
+            {active === 'store' && <window.AppPlaceholder title="Marketplace" />}
+            {active === 'settings' && <window.AppPlaceholder title="Settings" />}
+          </div>
+        </div>
+        <button className="oxr-fab" aria-label="Chat support" onClick={() => {}}>
+          <window.AppIcon d={window.APP_I.chat} size={24} />
+        </button>
+        {create && <CreateModal onClose={() => setCreate(false)} />}
+      </div>
+    );
+  }
+
+  function boot() {
+    if (window.AppRail && window.AppHome) {
+      ReactDOM.createRoot(document.getElementById('root')).render(<AppRoot />);
+    } else { setTimeout(boot, 30); }
+  }
+  boot();
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+/**
+ * OrchestrateXR — Typography tokens + webfonts
+ * Family: Mona Sans (variable: width 75–125, weight 200–900, optical size).
+ * HEADLINES (live-site treatment): Mona Sans at NORMAL width (100%), weight 800,
+ * line-height ~1.2, slight negative tracking (~-1px). Body/UI: normal width, weight 425.
+ * Expanded/Condensed/Narrow widths are available for special display moments only
+ * — the marketing headlines are NOT expanded.
+ */
+@font-face {
+  font-family: 'Mona Sans';
+  src: url('../assets/fonts/MonaSansVF.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Mona Sans Mono';
+  src: url('../assets/fonts/MonaSansMonoVF.woff2') format('woff2-variations');
+  font-weight: 200 900;
+  font-stretch: 75% 125%;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  /* ---- Families (all map to Mona Sans; pick width via --oxr-stretch-*) ---- */
+  --oxr-font-sans: 'Mona Sans', system-ui, sans-serif;
+  --oxr-font-expanded: 'Mona Sans', system-ui, sans-serif;  /* + font-stretch:125% */
+  --oxr-font-condensed: 'Mona Sans', system-ui, sans-serif; /* + font-stretch:87.5% */
+  --oxr-font-narrow: 'Mona Sans', system-ui, sans-serif;    /* + font-stretch:75% */
+  --oxr-font-mono: 'Mona Sans Mono', ui-monospace, monospace;
+
+  /* ---- Width axis (font-stretch) ---- */
+  --oxr-stretch-narrow: 75%;
+  --oxr-stretch-condensed: 87.5%;
+  --oxr-stretch-normal: 100%;
+  --oxr-stretch-expanded: 125%;
+
+  /* ---- Weights ---- */
+  --oxr-weight-regular: 425;   /* Mona Sans "regular" */
+  --oxr-weight-medium: 500;
+  --oxr-weight-semibold: 600;  /* headings */
+  --oxr-weight-bold: 700;
+  --oxr-weight-black: 900;     /* display */
+
+  /* ---- Line heights ---- */
+  --oxr-leading-tight: 1.1;
+  --oxr-leading-snug: 1.2;
+  --oxr-leading-body: 1.5;
+  --oxr-leading-relaxed: 1.625;
+
+  /* ---- Fluid type scale (min -> max via clamp) ---- */
+  --oxr-text-caption: clamp(0.825rem, 0.825rem + ((1vw - 0.2rem) * 0.213), 0.95rem);
+  --oxr-text-small:   clamp(0.9rem, 0.9rem + ((1vw - 0.2rem) * 0.255), 1.05rem);
+  --oxr-text-body:    clamp(1rem, 1rem + ((1vw - 0.2rem) * 0.281), 1.165rem);
+  --oxr-text-h3:      clamp(1.2rem, 1.2rem + ((1vw - 0.2rem) * 0.766), 1.65rem);
+  --oxr-text-h2:      clamp(1.5rem, 1.5rem + ((1vw - 0.2rem) * 2.128), 2.75rem);
+  --oxr-text-h1:      clamp(1.875rem, 1.875rem + ((1vw - 0.2rem) * 2.766), 3.5rem);
+  --oxr-text-display: clamp(2.25rem, 2.25rem + ((1vw - 0.2rem) * 3.639), 4.3875rem);
+
+  /* ---- Semantic text aliases ---- */
+  --oxr-tracking-tight: -0.02em;
+  --oxr-tracking-normal: 0;
+  --oxr-tracking-eyebrow: 0.12em; /* uppercase eyebrows / labels */
+}

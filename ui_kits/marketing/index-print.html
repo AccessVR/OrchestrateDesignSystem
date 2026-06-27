@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>OrchestrateXR — Simulation training for everyone</title>
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: var(--oxr-font-sans); color: var(--oxr-text); background: var(--oxr-surface); -webkit-font-smoothing: antialiased; }
+  .oxr-mobile-menu { display: none; }
+  @media (max-width: 860px) {
+    .oxr-desktop-nav { display: none !important; }
+    .oxr-mobile-toggle { display: inline-flex !important; }
+    .oxr-hero-grid { grid-template-columns: 1fr !important; }
+    .oxr-footer-grid { grid-template-columns: 1fr 1fr !important; }
+  }
+  .oxr-overlay { position: fixed; inset: 0; background: rgba(35,27,21,0.45); backdrop-filter: blur(3px); display: flex; align-items: center; justify-content: center; z-index: 100; padding: 24px; }
+
+  /* ---- Print ---- */
+  @page { size: letter; margin: 0; }
+  @media print {
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    html, body { background: #fff; }
+    body { padding: 0; }
+    /* sticky header → static so it doesn't repeat/overlap */
+    header { position: static !important; backdrop-filter: none !important; }
+    /* drop interactive-only chrome */
+    .oxr-overlay, .oxr-mobile-toggle, .oxr-mobile-menu { display: none !important; }
+    /* keep units whole, avoid lonely headings */
+    h1, h2, h3 { break-after: avoid; }
+    img, article, blockquote { break-inside: avoid; }
+    p, li { orphans: 3; widows: 3; }
+    /* freeze any entrance animations at their end state */
+    *, *::before, *::after {
+      animation-delay: -99s !important; animation-duration: .001s !important;
+      animation-iteration-count: 1 !important; animation-fill-mode: both !important;
+      animation-play-state: running !important; transition-duration: 0s !important;
+    }
+  }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel" src="marketing-top.jsx"></script>
+<script type="text/babel" src="marketing-bottom.jsx"></script>
+<script type="text/babel">
+  const OXRk = window.OrchestrateXRDesignSystem_878eaf;
+
+  function Site() {
+    const reg = () => {};
+    const signin = () => {};
+    return (
+      <React.Fragment>
+        <Header onSignIn={signin} onRegister={reg} />
+        <main>
+          <Hero onRegister={reg} />
+          <FeatureGrid />
+          <CustomerStrip />
+          <BuiltFor />
+          <FeatureList />
+          <Stats />
+          <Testimonial />
+          <BlogStrip />
+          <FinalCTA onRegister={reg} />
+        </main>
+        <Footer />
+      </React.Fragment>
+    );
+  }
+
+  function boot() {
+    if (window.Header && window.Footer && window.Stats) {
+      ReactDOM.createRoot(document.getElementById('root')).render(<Site />);
+    } else { setTimeout(boot, 30); }
+  }
+  boot();
+</script>
+<script>
+  addEventListener('load', () => {
+    (async () => {
+      // wait for the React tree to mount
+      const root = document.getElementById('root');
+      const start = Date.now();
+      while (root.children.length === 0 && Date.now() - start < 8000) {
+        await new Promise((r) => setTimeout(r, 50));
+      }
+      try { await document.fonts.ready; } catch (e) {}
+      const imgs = Array.from(document.images).filter((i) => !i.complete);
+      await Promise.race([
+        Promise.allSettled(imgs.map((i) => i.decode())),
+        new Promise((r) => setTimeout(r, 8000)),
+      ]);
+      setTimeout(() => window.print(), 600);
+    })();
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!-- @dsCard group="Spacing" viewport="700x180" name="Fluid Rhythm & Containers" subtitle="clamp() section spacing + 740 / 1260 widths" -->
+<!doctype html>
+<html><head><meta charset="utf-8"><link rel="stylesheet" href="../styles.css">
+<style>
+  body{margin:0;padding:24px;background:var(--oxr-surface-tint);font-family:var(--oxr-font-sans);color:var(--oxr-text)}
+  .demo{background:var(--oxr-surface);border:1px solid var(--oxr-border);border-radius:var(--oxr-radius);padding:var(--oxr-space-section)}
+  .lbl{font-family:var(--oxr-font-mono);font-size:11px;color:var(--oxr-text-muted);margin-bottom:10px}
+  .block{background:var(--oxr-brand-wash);border-radius:var(--oxr-radius-sm);height:28px;margin-bottom:var(--oxr-space-block-gap)}
+  .block:last-child{margin-bottom:0}
+  .widths{display:flex;gap:10px;margin-top:14px;font-family:var(--oxr-font-mono);font-size:11px;color:var(--oxr-text-muted)}
+  .pill{background:var(--oxr-ink-900);color:#fff;border-radius:var(--oxr-radius-pill);padding:3px 10px}
+</style></head>
+<body>
+<div class="demo">
+  <div class="lbl">padding: --oxr-space-section · gap: --oxr-space-block-gap</div>
+  <div class="block"></div>
+  <div class="block"></div>
+</div>
+<div class="widths">
+  <span class="pill">content 740px</span>
+  <span class="pill">wide 1260px</span>
+  <span>hero · section-lg · section · block-gap</span>
+</div>
+</body></html>

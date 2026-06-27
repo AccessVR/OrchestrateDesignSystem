@@ -1,0 +1,50 @@
+<!-- @dsCard group="Components" viewport="700x220" name="Badges, Tags, Avatars & Stats" subtitle="Status pills, content chips, avatars, proof numbers" -->
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" href="../../styles.css">
+<script crossorigin src="https://unpkg.com/react@18.3.1/umd/react.production.min.js"></script>
+<script crossorigin src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.production.min.js"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js"></script>
+<script src="../../_ds_bundle.js"></script>
+<style>
+  body { margin: 0; padding: 24px; background: var(--oxr-surface); font-family: var(--oxr-font-sans); color: var(--oxr-text); }
+  .row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-bottom: 16px; }
+</style>
+</head>
+<body>
+<div id="root"></div>
+<script type="text/babel">
+  const { Badge, Tag, Avatar, Stat } = window.OrchestrateXRDesignSystem_878eaf;
+  function Demo() {
+    return (
+      <React.Fragment>
+        <div className="row">
+          <Badge>New</Badge>
+          <Badge tone="brand">Live</Badge>
+          <Badge tone="soft">Beta</Badge>
+          <Badge tone="ink">Pro</Badge>
+          <Badge tone="success">Published</Badge>
+          <Badge tone="warning">Coming soon</Badge>
+        </div>
+        <div className="row">
+          <Tag active>Conversations</Tag>
+          <Tag>Experiences</Tag>
+          <Tag>Video</Tag>
+          <Tag onRemove={()=>{}}>SCORM</Tag>
+          <Avatar name="David Moody" />
+          <Avatar name="Rob Moore" />
+          <Avatar name="Aaron Collegeman" size={48} />
+        </div>
+        <div className="row" style={{gap:'40px', marginTop:'8px'}}>
+          <Stat value="4x" label="Training speed">VR learners trained four times faster than classroom learners.</Stat>
+          <Stat value="275%" label="Confidence to apply">More confident to act on what they learned post-training.</Stat>
+        </div>
+      </React.Fragment>
+    );
+  }
+  ReactDOM.createRoot(document.getElementById('root')).render(<Demo/>);
+</script>
+</body>
+</html>
